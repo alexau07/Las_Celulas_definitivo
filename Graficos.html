@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Grafico </title>
+   <link rel="stylesheet" href="estilo.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function irInicio() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Gráficos sobre Células</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="Numerodecelulas.html"> Número de células</a>
+            <a href="Tiposdecelula.html"> Tipos de células</a>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <h2>Gráfico sobre Cuentas de Células en el Cuerpo Humano</h2>
+            <p>Se estima que el cuerpo humano está formado por aproximadamente 37.2 billones de células. Estas células se dividen en diferentes tipos y realizan funciones especializadas en distintos órganos y tejidos. Por ejemplo, las células sanguíneas transportan oxígeno a través del cuerpo, mientras que las células del sistema nervioso permiten la transmisión de señales eléctricas.</p>
+            
+            <div id="chart-container">
+                <canvas id="cellChart"></canvas>
+            </div>
+            
+            <p>En el gráfico de abajo puedes observar una representación aproximada de la distribución de diferentes tipos de células en el cuerpo humano.</p>
+        </article>
+        <aside>
+            <h2>Más sobre las Células</h2>
+            <p>Las células en el cuerpo humano están especializadas para realizar tareas muy diferentes entre sí, lo que permite que nuestro cuerpo funcione de manera eficiente y compleja. Cada tipo de célula tiene su propia estructura y función vital.</p>
+        </aside>
+    </section>
+    <footer>
+        <p>&copy; 2025 Las Células. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Gráfico de Células en el Cuerpo Humano
+        var ctx = document.getElementById('cellChart').getContext('2d');
+        var cellChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Células Sanguíneas', 'Células Nerviosas', 'Células Musculares', 'Otras'],
+                datasets: [{
+                    label: 'Distribución de Células en el Cuerpo Humano',
+                    data: [25, 20, 15, 40], // Valores aproximados de cada tipo de célula
+                    backgroundColor: ['#99BC85', '#FDFAF6', '#E4EFE7', '#FAF1E6'],
+                    borderColor: ['#66A768', '#C4BFB0', '#D3D2C2', '#E9D8B8'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 5
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
